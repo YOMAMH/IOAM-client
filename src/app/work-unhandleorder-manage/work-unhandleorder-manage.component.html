@@ -1,0 +1,100 @@
+<div class="mainPage">
+    <div class="hostContainer">
+        <div class="title">
+            <span>我的未处理主机配置工单</span>
+        </div>
+        <div class="hostTab">
+            <table>
+                <tr class="header">
+                    <th width="100">ID</th>
+                    <th width="280">主题</th>
+                    <th width="200">状态</th>
+                    <th width="200">优先级</th>
+                    <th width="200">受理人</th>
+                    <th width="300">创建日期</th>
+                    <th width="280">操作</th>
+                </tr>
+                <tr class="hostItem" [hidden]="!orderInfo" *ngFor="let info of orderInfo">
+                    <td><span>{{info?.id}}</span></td>
+                    <td><span>{{info?.title}}</span></td>
+                    <td><i class="fa" style="display: none"></i>{{info?.type}}</td>
+                    <td>{{info?.priority}}</td>
+                    <td>{{info?.accept_user}}</td>
+                    <td>{{info?.create_time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>
+                        <button class="btn btn-default detailBtn" data-toggle="modal"
+                                data-target=".detailView">详情
+                        </button>
+                        <button class="btn btn-default deleteBtn">撤销
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="hostInfoRequestResView"></div>
+        <!--底部分页-->
+        <div class="pagination">
+            <div class="M-box3"></div>
+        </div>
+    </div>
+</div>
+
+<!--工单详情-->
+<div class="modal fade detailView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content CreatehostSingleView">
+            <div class="addTitle">我的未处理主机配置工单详情</div>
+            <div class="addContent">
+                <div class="centerView">
+                    <div class="addContentGroup">
+                        <div>主题：<span></span></div>
+                        <i style="display: none"></i>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>申请类型：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>实例名称：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>所属业务组：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>所在机房：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>受理人：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>优先级：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>备注：</div>
+                        <div><textarea class="noteView" cols="100" rows="5" disabled="disabled"></textarea>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>状态：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>操作历史：</div>
+                        <div><textarea class="noteView" cols="100" rows="10" disabled="disabled"></textarea>
+                        </div>
+                    </div>
+                    <div class="handle ">
+                        <div class="handleBtn">
+                            <button type="button" class="btn btn-warning BatchBtn" id="deleteBtn"> 撤回 </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="closeBtn"><i class="fa fa-close"></i></div>
+
+    </div>
+</div>
+
+<!--loding-->
+<div class="conver" [hidden]="orderInfo">
+    <div class="conContent"></div>
+</div>

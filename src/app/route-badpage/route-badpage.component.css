@@ -1,0 +1,5 @@
+.mainImagePage {
+    width: 100%;
+    min-height: 850px;
+    background: url(assets/images/badRequestImg.jpg) center center no-repeat;
+}

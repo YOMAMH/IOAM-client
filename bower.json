@@ -1,0 +1,23 @@
+{
+  "name": "ty-cmdb-client",
+  "description": "",
+  "main": "",
+  "authors": [
+    "YOMAMH <741834601@qq.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/public",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "highcharts": "^5.0.9"
+  }
+}

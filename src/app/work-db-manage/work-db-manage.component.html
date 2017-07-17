@@ -1,0 +1,163 @@
+<div class="mainPage">
+  <div class="orderMainContainer">
+    <div class="hostContainer">
+      <div class="title">
+        <span>我的数据库工单</span>
+        <!-- Single button -->
+        <div class="btn-group createOrder">
+          <button type="button" class="btn btn-default" id="createDbOrder">新增数据库工单</button>
+        </div>
+      </div>
+      <div class="hostTab">
+        <table>
+          <tr class="header">
+            <th width="280">ID / Schema</th>
+            <th width="280">升级对象</th>
+            <th width="200">升级类型</th>
+            <th width="200">工单状态</th>
+            <th width="200">受理部门</th>
+            <th width="200">最终操作人</th>
+            <th width="300">创建日期</th>
+            <th width="280">操作</th>
+          </tr>
+          <tr class="hostItem" [hidden]="!orderInfo" *ngFor="let info of orderInfo">
+            <td><span>{{info?.id}}</span> / {{info?.schema_name}}</td>
+            <td>{{info?.update_target}}</td>
+            <td>{{info?.update_type}}</td>
+            <td><div class="orderType"><span>{{info?.order_type}}</span></div></td>
+            <td>{{info?.accept_user}}</td>
+            <td>{{info?.accept_user_last}}</td>
+            <td>{{info?.create_time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>
+              <button class="btn btn-default detailBtn" data-toggle="modal"
+                      data-target=".detailView">详情
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--底部分页-->
+      <div class="pagination">
+        <div class="M-box3"></div>
+      </div>
+    </div>
+    <div class="orderContainer">
+      <div id="addOrderType" style="display: none"></div>
+      <div class="title">
+        <a class="backBtn" href="javascript:void(0);"><i class="fa fa-chevron-left"></i>返回</a>
+        <span>数据库工单</span>
+      </div>
+      <div class="hostTab">
+        <div class="orderBox">
+          <div class="orderItem">
+            <span>Schem<i>*</i></span> &nbsp;&nbsp;
+            <select autofocus="autofocus"></select>
+          </div>
+          <div class="orderItem">
+            <span>升级对象<i>*</i></span> &nbsp;&nbsp;
+            <select>
+              <option value="记录">记录</option>
+              <option value="表">表</option>
+              <option value="库">库</option>
+              <option value="实例">实例</option>
+            </select>
+          </div>
+          <div class="orderItem">
+            <span>升级类型<i>*</i></span> &nbsp;&nbsp;
+            <select id="dbChangeType">
+              <option value="提取数据">提取数据</option>
+              <option value="修改数据">修改数据</option>
+              <option value="增加新表">增加新表</option>
+              <option value="增加新库">增加新库</option>
+              <option value="表结构变更">表结构变更</option>
+            </select>
+          </div>
+          <div class="orderItem" style="display: none" id="newDataBase">
+            <span>新增数据库名<i>*</i></span> &nbsp;&nbsp;
+            <input type="text" placeholder="多个库名用英文逗号隔开">
+          </div>
+          <div class="orderItem">
+            <span>操作备注</span> &nbsp;&nbsp;
+            <input type="text" value="无">
+          </div>
+          <div class="orderItem">
+            <span>操作步骤</span> &nbsp;&nbsp;
+            <textarea rows="4" cols="130" style="vertical-align: top" placeholder="如果sql比较简单请直接写在这里并给出查询的详细步骤，无需上传附件！！"></textarea>
+          </div>
+          <div class="orderItem">
+            <span>sql附件</span> &nbsp;&nbsp;
+            <input type="file" class="sql_file_input" id="sql_file">
+          </div>
+          <div class="orderItem" style="text-align: center">
+            <button class="btn btn-default" id="resetBtn">重置</button>
+            <button class="btn btn-success" id="commitBtn">发布</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="hostInfoRequestResView"></div>
+    </div>
+  </div>
+</div>
+
+<div class="hostInfoRequestResView"></div>
+
+<!--工单详情-->
+<div class="modal fade detailView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content CreatehostSingleView">
+      <div class="addTitle">数据库工单详情</div>
+      <div class="addContent">
+        <div class="centerView">
+          <div class="addContentGroup">
+            <div>Schema：<span></span></div>
+            <i id="sign" style="display: none"></i>
+          </div>
+          <div class="addContentGroup">
+            <div>升级对象：<span></span><i style="display: none"></i></div>
+          </div>
+          <div class="addContentGroup">
+            <div>升级类型：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>操作备注：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>操作步骤：</div>
+            <div><textarea class="noteView" cols="100" rows="10" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>处理日期：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>工单状态：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>工单操作历史：</div>
+            <div><textarea class="noteView" cols="100" rows="10" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>sql附件：</div>
+            <div><span style="color: #1db702"></span>
+              <button type="button" class="btn btn-default" id="downloadSqlFile" style="display: none">下载</button>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div class="handleBtn">
+              <button type="button" class="btn btn-success BatchBtn" id="handleAcBtn">确认</button>
+              <button type="button" class="btn btn-warning BatchBtn" id="reSentBtn" data-toggle="modal" data-target=".bs-example-modal-lg">再次提交</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="closeBtn"><i class="fa fa-close"></i></div>
+  </div>
+</div>
+
+<!--loding-->
+<div class="conver" [hidden]="orderInfo">
+  <div class="conContent"></div>
+</div>

@@ -1,0 +1,190 @@
+<div class="mainPage">
+  <div class="hostBanner">
+    <div class="hostTitleBox"><span class="fa fa-align-justify uhostIcon"></span><span>云内存数据库</span></div>
+    <div class="hostSelectBox">
+      <div class="hostContainerBtn selectType"><span>Redis</span></div>
+      <div class="hostRecoverBtn1"><span>Memcache</span></div>
+      <div class="hostRecoverBtn"><span>回收站</span></div>
+      <div class="hostHistoryBtn"><span>变更记录统计</span></div>
+    </div>
+  </div>
+  <div class="hostBox">
+    <div class="hostContainer">
+      <div class="hostTitle">
+        <div class="CreatehostSingle">
+          <button type="button" class="btn btn-primary singleBtn" data-toggle="modal"
+                  data-target=".bs-example-modal-lg" id="createSingleBtn">
+            <i class="fa fa-plus-square" style="margin-right: 3px"></i>添加Redis
+          </button>
+        </div>
+
+        <div class="CreatehostBatch">
+          <button type="button" class="btn btn-success BatchBtn" id="createAllBtn"> 一键导入ucloud数据</button>
+        </div>
+
+        <div class="UpdatehostBatch">
+          <button type="button" class="btn btn-info BatchBtn" id="updateAllBtn"><i class="fa fa-cog fa-spin fa-3x fa-fw" style="font-size: 15px; display: none"></i> <span>一键更新</span></button>
+        </div>
+
+        <div class="searchBtn">
+          <input type="text" class="searchText" placeholder="请输入资源ID关键字（Enter搜索）">
+        </div>
+      </div>
+      <div class="hostTab">
+        <table height="100" width="95%">
+          <tr class="header">
+            <th width="180">实例名称</th>
+            <th width="100">可用区</th>
+            <th width="100">业务组</th>
+            <th width="180">机型</th>
+            <th width="180">IP和端口</th>
+            <th width="100">状态</th>
+            <th width="300">实例容量</th>
+            <th width="280">到期时间</th>
+            <th width="180">操作</th>
+          </tr>
+          <tr class="hostItem" [hidden]="!redisBaseInfoObj" *ngFor="let host of redisBaseInfoObj">
+            <td>{{host?.Name}}<span style="display: none">{{host?.SpaceId}}</span></td>
+            <td>{{host?.Zone}}</td>
+            <td>{{host?.Tag}}</td>
+            <td><span>分布式版</span></td>
+            <td><span>{{host?.Address[0]['IP']}}<br>{{host?.Address[1]['IP']}}</span></td>
+            <td>{{host?.State}}</td>
+            <td class="sizeTd"><div class="sizeContainBase"><div class="sizeView"></div></div>{{host?.Size}}G<div class="usedSize">已用{{host?.UsedSize}}M</div></td>
+            <td>{{host?.ExpireTime * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}<span class="fa fa-exclamation-triangle tips" style="display: none"></span></td>
+            <td>
+              <a class="btn btn-default updateBtn" href="javascript:void (0);">更新</a>
+              <a class="btn btn-default deleteBtn" href="javascript:void (0);">删除</a>
+            </td>
+          </tr>
+          <tr class="hostItem" [hidden]="!redisGroupInfoObj" *ngFor="let host of redisGroupInfoObj">
+            <td>{{host?.Name}}<span style="display: none">{{host?.GroupId}}</span></td>
+            <td>{{host?.Zone}}</td>
+            <td>{{host?.Tag}}</td>
+            <td><span>主备版</span></td>
+            <td><span>{{host?.VirtualIP}}</span></td>
+            <td>{{host?.State}}</td>
+            <td class="sizeTd"><div class="sizeContainGroup"><div class="sizeView"></div></div>{{host?.Size}}G<div class="usedSize">已用{{host?.UsedSize}}M</div></td>
+            <td>{{host?.ExpireTime * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>
+              <a class="btn btn-default updateBtn" href="javascript:void (0);">更新</a>
+              <a class="btn btn-default deleteBtn" href="javascript:void (0);">删除</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="hostInfoRequestResView"></div>
+      <!--底部分页-->
+      <div class="pagination">
+        <div class="M-box3"></div>
+      </div>
+    </div>
+    <div class="hostRecover1">
+      <div class="hostTitle" style="padding-top: 10px">
+      </div>
+      <div class="hostTab">
+        <h1>暂无此功能，敬请期待后续开发</h1>
+      </div>
+      <div class="hostInfoRequestResView"></div>
+    </div>
+    <div class="hostRecover" style="display: none">
+      <div class="hostTitle"></div>
+      <div class="hostTab">
+        <table>
+          <tr class="header">
+            <th width="180">实例名称</th>
+            <th width="100">可用区</th>
+            <th width="100">业务组</th>
+            <th width="180">机型</th>
+            <th width="180">IP和端口</th>
+            <th width="100">状态</th>
+            <th width="300">实例容量</th>
+            <th width="280">到期时间</th>
+            <th width="180">操作</th>
+          </tr>
+          <tr class="hostItem" [hidden]="!hostDropInfoBase" *ngFor="let host of hostDropInfoBase">
+            <td>{{host?.Name}}<span style="display: none">{{host?.SpaceId}}</span></td>
+            <td>{{host?.Zone}}</td>
+            <td>{{host?.Tag}}</td>
+            <td><span>分布式版</span></td>
+            <td><span>{{host?.Address[0]['IP']}}<br>{{host?.Address[1]['IP']}}</span></td>
+            <td>{{host?.State}}</td>
+            <td class="sizeTd"><div class="sizeContainBase"><div class="sizeView"></div></div>{{host?.Size}}G<div class="usedSize">已用{{host?.UsedSize}}M</div></td>
+            <td>{{host?.ExpireTime * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}<span class="fa fa-exclamation-triangle tips" style="display: none"></span></td>
+            <td><button type="button" class="btn btn-default cancelDelBtn">还原</button></td>
+          </tr>
+          <tr class="hostItem" [hidden]="!hostDropInfoGroup" *ngFor="let host of hostDropInfoGroup">
+            <td>{{host?.Name}}<span style="display: none">{{host?.GroupId}}</span></td>
+            <td>{{host?.Zone}}</td>
+            <td>{{host?.Tag}}</td>
+            <td><span>主备版</span></td>
+            <td><span>{{host?.VirtualIP}}</span></td>
+            <td>{{host?.State}}</td>
+            <td class="sizeTd"><div class="sizeContainGroup"><div class="sizeView"></div></div>{{host?.Size}}G<div class="usedSize">已用{{host?.UsedSize}}M</div></td>
+            <td>{{host?.ExpireTime * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td><button type="button" class="btn btn-default cancelDelBtn">还原</button></td>
+          </tr>
+        </table>
+      </div>
+      <div class="hostInfoRequestResView"></div>
+    </div>
+    <div class="histoyView" style="display: none">
+      <div class="hostTitle">
+        <span>年份: &nbsp;</span>
+        <select class="begDateYear">
+          <option value="2016-">2016</option>
+          <option value="2017-">2017</option>
+          <option value="2018-">2018</option>
+        </select>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;业务组: &nbsp;</span>
+        <select class="tagView">
+          <option value="all">全部</option>
+          <option value="app">听云APP</option>
+          <option value="brs">听云Browser</option>
+          <option value="common">听云Common</option>
+          <option value="net">听云Network</option>
+          <option value="saas">听云Saas</option>
+          <option value="svr">听云Server</option>
+          <option value="base">运维基础组件</option>
+          <option value="cctl">听云Controller</option>
+        </select>
+      </div>
+      <div id="container" style="min-width:400px;height:400px;"></div>
+    </div>
+  </div>
+</div>
+
+<!--添加主机-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content CreatehostSingleView">
+      <div class="hostId">
+        <div class="hostIdInput">
+          <select class="checkHostRegion">
+            <option value="cn-bj1" >北京一</option>
+            <option value="cn-bj2" selected>北京二</option>
+            <option value="hk">香港</option>
+          </select>          <input type="text" placeholder="请输入资源ID" class="checkHostText">
+        </div>
+        <button class="btn btn-default checkHostBtn">搜索</button>
+      </div>
+      <div class="createhostResult"><span></span></div>
+      <div class="hostInfoContent"></div>
+      <div class="hostCheckConver" style="display: none"><span>搜索中...</span></div>
+      <div class="createSureconver" style="display: none">
+        <div class="conContent"></div>
+      </div>
+      <div class="handle">
+        <div class="btn-group handleBtn">
+          <button type="button" class="btn btn-success BatchBtn" id="createSure"> 确认</button>
+          <button type="button" class="btn btn-warning BatchBtn" id="createCancel"> 取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--loding-->
+<div class="conver" [hidden]="redisBaseInfoObj || redisGroupInfoObj">
+  <div class="conContent"></div>
+</div>

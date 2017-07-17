@@ -1,0 +1,74 @@
+<div class="mainPage">
+  <div class="hostContainer">
+    <div class="title">
+      <span>用户权限列表</span>
+    </div>
+    <div class="hostTab">
+      <table>
+        <tr class="header">
+          <th width="280">姓名</th>
+          <th width="200">ID</th>
+          <th width="200">所属业务组</th>
+          <th width="300">角色</th>
+          <th width="300">创建日期</th>
+          <th width="200">操作</th>
+        </tr>
+        <tr class="hostItem" [hidden]="!userAuthInfo" *ngFor="let user of userAuthInfo">
+          <td>{{user?.name}}</td>
+          <td>{{user?.uidNumber}}</td>
+          <td>{{user?.group}}</td>
+          <td>{{user?.authText}}</td>
+          <td style="display: none">{{user?.auth}}</td>
+          <td>{{user?.create_time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td>
+            <button class="btn btn-default updateBtn" data-toggle="modal" data-target=".bs-example-modal-lg">角色变更</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!--底部分页-->
+    <div class="pagination">
+      <div class="M-box3"></div>
+    </div>
+  </div>
+
+<div class="hostInfoRequestResView"></div>
+  <!--loding-->
+  <div class="conver" [hidden]="userAuthInfo">
+    <div class="conContent"></div>
+  </div>
+</div>
+
+<!--添加工单-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content CreatehostSingleView">
+      <div class="addTitle">角色变更</div>
+      <div class="addContent">
+        <div class="centerView">
+          <div class="addContentTitle">
+            <div>所属业务组：</div>
+            <div>
+              <label for="id_select1"></label>
+              <select id="id_select1" class="selectpicker bla bla bli" multiple data-live-search="true"></select>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>角色：</div>
+            <div>
+              <label for="id_select"></label>
+              <select id="id_select" class="selectpicker bla bla bli" multiple data-live-search="true"></select>
+            </div>
+          </div>
+          <div class="handle ">
+            <div class="handleBtn">
+              <button type="button" class="btn btn-success BatchBtn" id="createSure"> 确认</button>
+              <button type="button" class="btn btn-warning BatchBtn" id="createCancel"> 取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

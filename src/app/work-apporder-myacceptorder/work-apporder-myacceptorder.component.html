@@ -1,0 +1,167 @@
+<div class="mainPage">
+  <div class="hostContainer">
+    <div class="title">
+      <span>我的受理应用工单</span>
+    </div>
+    <div class="hostTab">
+      <table>
+        <tr class="header">
+          <th width="200" height="40">业务类别</th>
+          <th width="200" height="40">应用名称</th>
+          <th width="200" height="40">工单状态</th>
+          <th width="200" height="40">工单发起人</th>
+          <th width="300" height="40">创建日期</th>
+          <th width="280" height="40">操作</th>
+        </tr>
+        <tr class="handledOrderItem" [hidden]="!handleOrderInfo" *ngFor="let info of handleOrderInfo">
+          <td><span style="display: none;">{{info?.id}}</span>{{info?.pro_type}}</td>
+          <td>{{info?.pro_name}}</td>
+          <td><div class="orderType"><span>{{info?.order_type}}</span></div></td>
+          <td>{{info?.send_user}}</td>
+          <td>{{info?.create_time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td>
+            <button class="btn btn-default detailBtn" data-toggle="modal" data-target=".detailView">审批
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!--底部分页-->
+    <div class="pagination">
+      <div class="M-box3"></div>
+    </div>
+  </div>
+</div>
+<div class="hostInfoRequestResView"></div>
+<!--审核-->
+<div class="modal fade detailView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content CreatehostSingleView">
+      <div class="addTitle">我的受理应用工单详情</div>
+      <div class="addContent">
+        <div class="centerView">
+          <div class="addContentGroup">
+            <div>业务类别：<span></span><i style="display: none" id="sign"></i></div>
+          </div>
+          <div class="addContentGroup">
+            <div>应用名称：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>升级类型：<span id="update_type"></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>迭代版本：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>Build Num：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>Jenkins项目名称：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>升级功能列表：</div>
+            <div><textarea class="noteView" cols="100" rows="5" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>配置文件修改: </div>
+            <div><textarea class="noteView" cols="100" rows="5" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>升级依赖描述：</div>
+            <div><textarea class="noteView" cols="100" rows="5" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>程序附件：</div>
+            <div><span style="color: #1db702"></span><button class="btn btn-default" id="downloadAppFile">下载</button></div>
+          </div>
+          <div class="addContentGroup">
+            <div>sql附件：</div>
+            <div><span style="color: #1db702"></span><button type="button" class="btn btn-default" id="downloadSqlFile">下载</button></div>
+          </div>
+          <div class="addContentGroup">
+            <div>操作历史：</div>
+            <div><textarea class="noteView" cols="100" rows="10" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>创建时间：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>工单发起人：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>工单状态：<span id="orderType"></span></div>
+          </div>
+          <div class="addContentGroup" id="testerAction" style="display: none">
+            <div>测试意见：<textarea class="noteView" cols="100" rows="5"></textarea></div>
+          </div>
+          <div class="addContentGroup" id="proerAction" style="display: none">
+            <div>产品意见：<textarea class="noteView" cols="100" rows="5"></textarea></div>
+          </div><div class="addContentGroup" id="reason" style="display: none">
+            <div>运维意见：<textarea class="noteView" cols="100" rows="5"></textarea></div>
+          </div>
+          <div class="handleLast" style="display: none">
+            <div style="color: red; margin-top: 10px;">
+              --------------------------------- 以下为必填信息 ---------------------------------
+            </div>
+            <div style="color: olivedrab; font-weight: bolder;"><i>变更记录：</i><br></div>
+            <div class="addContentGroup" id="change_content">
+              <div>1. 变更操作主题：</div>
+              <div><input type="text" id="changeTitle"></div>
+              <div style="color: red">
+                3. 变更内容填写规则:<br>
+                *多个实例用英文;隔开<br>
+                {{"*例：1.xxx;"}}
+              </div>
+              <div><textarea class="noteView" cols="100" rows="5" id="change_content_detail"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="handle">
+            <div class="handleBtn">
+              <a type="button" class="btn btn-success BatchBtn" id="createSure">通过</a>
+              <button type="button" class="btn btn-warning BatchBtn" id="createCancel">拒绝</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="closeBtn"><i class="fa fa-close"></i></div>
+
+  </div>
+</div>
+
+<!--工单转出-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content CreatehostSingleView">
+      <div class="addTitle">受理工单转出</div>
+      <div class="centerView">
+        <div class="addContentGroup">
+          <div>转出给：<select id="acceptView"></select></div>
+        </div>
+        <div class="addContentGroup">
+          <div>原因：</div>
+          <div><textarea class="noteView" cols="100" rows="5"></textarea>
+          </div>
+        </div>
+        <div class="handle">
+          <div class="handleBtn">
+            <button type="button" class="btn btn-success BatchBtn" id="sureBtn">确认</button>
+            <button type="button" class="btn btn-warning BatchBtn" id="cancleResBtn">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="closeBtn"><i class="fa fa-close"></i></div>
+
+  </div>
+</div>
+
+<!--loding-->
+<div class="conver" [hidden]="unHandleOrderInfo || handledOrderInfo">
+  <div class="conContent"></div>
+</div>

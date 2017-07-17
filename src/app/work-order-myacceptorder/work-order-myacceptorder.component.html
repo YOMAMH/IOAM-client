@@ -1,0 +1,154 @@
+<div class="mainPage">
+    <div class="hostContainer">
+        <div class="title">
+            <span>我的受理主机配置工单</span>
+        </div>
+        <div class="hostTab">
+            <table>
+                <tr class="header">
+                    <th width="280" height="40">主题</th>
+                    <th width="200" height="40">工单类别</th>
+                    <th width="200" height="40">状态</th>
+                    <th width="200" height="40">优先级</th>
+                    <th width="200" height="40">工单发起人</th>
+                    <th width="300" height="40">创建日期</th>
+                    <th width="280" height="40">操作</th>
+                </tr>
+                <tr class="handledOrderItem" [hidden]="!handleOrderInfo" *ngFor="let info of handleOrderInfo">
+                    <td>{{info?.title}} <span style="display: none">{{info?.id}}</span></td>
+                    <td>{{info?.change_type}}</td>
+                    <td><div class="orderType"><span>{{info?.type}}</span></div></td>
+                    <td>{{info?.priority}}</td>
+                    <td>{{info?.send_user}}</td>
+                    <td>{{info?.create_time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>
+                        <button class="btn btn-default detailBtn" data-toggle="modal" data-target=".detailView">详情
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="hostInfoRequestResView"></div>
+        <!--底部分页-->
+        <div class="pagination">
+            <div class="M-box3"></div>
+        </div>
+    </div>
+</div>
+
+<!--工单详情-->
+<div class="modal fade detailView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content CreatehostSingleView">
+            <div class="addTitle">受理主机配置工单详情</div>
+            <div class="addContent">
+                <div class="centerView">
+                    <div class="addContentGroup">
+                        <div>主题：<span></span><i style="display: none"></i></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>申请类型：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>实例名称：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>所属业务组：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>所在机房：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>申请人：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>创建日期：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>优先级：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>备注：</div>
+                        <div><textarea class="noteView" cols="100" rows="5" disabled="disabled"></textarea>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>状态：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>工单操作历史：</div>
+                        <div><textarea class="noteView" cols="100" rows="4" disabled="disabled"></textarea>
+                        </div>
+                    </div>
+                    <div class="addContentGroup" id="reasonView">
+                        <div>运维意见：</div>
+                        <div><textarea class="noteView" cols="100" rows="5" id="reason"></textarea>
+                        </div>
+                    </div>
+                    <div class="changeView">
+                        <div style="color: red; margin-top: 10px;">
+                            --------------------------------- 以下为必填信息 ---------------------------------
+                        </div>
+                        <div style="color: olivedrab; font-weight: bolder;"><i>变更记录：</i><br></div>
+                        <div class="addContentGroup" id="change_content">
+                            <div>1. 变更操作主题：</div>
+                            <div><input type="text" id="changeTitle"></div>
+                            <div>2. 变更实例名称: </div>
+                            <div><input type="text" id="changeInstanceName"></div>
+                            <div style="color: red">
+                                3. 变更内容填写规则:<br>
+                                {{"*实例名:变更内容;"}}<br>
+                                *多个实例用英文;隔开并换行 <br>
+                                *多条变更内容中间用"|"隔开 <br>
+                                {{"*例：xxx:1.xxx|2.xxx;"}}
+                            </div>
+                            <div><textarea class="noteView" cols="100" rows="5" id="change_content_detail"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handle">
+                        <div class="handleBtn">
+                            <button type="button" class="btn btn-success BatchBtn" id="createSure">通过</button>
+                            <button type="button" class="btn btn-warning BatchBtn" id="createCancel">拒绝</button>
+                            <button type="button" class="btn btn-danger BatchBtn" id="dropBtn" style="display: none">删除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="closeBtn"><i class="fa fa-close"></i></div>
+
+    </div>
+</div>
+
+<!--工单转出-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content CreatehostSingleView">
+            <div class="addTitle">受理工单转出</div>
+                <div class="centerView">
+                    <div class="addContentGroup">
+                        <div>转出给：<select id="acceptView"></select></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>原因：</div>
+                        <div><textarea class="noteView" cols="100" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="handle">
+                        <div class="handleBtn">
+                            <button type="button" class="btn btn-success BatchBtn" id="sureBtn">确认</button>
+                            <button type="button" class="btn btn-warning BatchBtn" id="cancleResBtn">取消</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="closeBtn"><i class="fa fa-close"></i></div>
+
+    </div>
+</div>
+
+<!--loding-->
+<div class="conver" [hidden]="unHandleOrderInfo || handledOrderInfo">
+    <div class="conContent"></div>
+</div>

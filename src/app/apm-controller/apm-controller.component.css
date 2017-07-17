@@ -1,0 +1,673 @@
+.conver {
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+    height: 750px;
+    top: 0;
+    opacity: .6;
+    background-color: white;
+}
+
+.conContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background: url(assets/images/loding.gif) center center no-repeat;
+    border-radius: 50%;
+}
+.mainPage {
+    width: 100%;
+    background-color: #F2F6FC;
+    min-height: 840px;
+    min-width: 1473px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.hostContainer{
+    margin: 10px 0 0 5px;
+    width: 78%;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    display: inline-block;
+}
+.mainPage .hostRecover {
+    display: inline-block;
+    width: 21%;
+    height: 757px;
+    overflow: hidden;
+    margin-top: 8px;
+    vertical-align: top;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.mainPage .hostRecover .hostTab {
+    margin-left: 0;
+}
+
+.mainPage .hostRecover .bottomLine {
+    -webkit-border-bottom:2px solid #f2f6fc;
+    -moz-border-bottom:2px solid #f2f6fc;
+    -ms-border-bottom:2px solid #f2f6fc;
+    -o-border-bottom:2px solid #f2f6fc;
+    -khtml-border-bottom:2px solid #f2f6fc;
+    border-bottom:2px solid #f2f6fc;
+    padding: 2px 0;
+    width: 100%;
+    min-width: 200px;
+}
+
+
+.manage {
+    height: 40px;
+    margin-left:20px;
+    padding-top: 15px;
+}
+.hostTab {
+    margin-left:20px;
+    min-height: 635px;
+}
+.hostTab .header {
+    width: 100%;
+    height: 40px;
+    background-color: #FFF;
+}
+.hostItem{
+    background-color:#FFF;
+    width: 70%;
+    border-bottom: 1px solid #C3CAD9;
+    height: 52px;
+}
+table tbody:nth-child(1) {
+    background-color:#F7F9FC;
+}
+.hostItem:hover {
+    background-color:#EAF3FD !important;
+}
+.hostItem td {
+    padding: 0 5px;
+    font-size: 13px;
+}
+.btn.btn-default.detailBtn ,.btn.btn-default.updateBtn, .btn.btn-default.deleteBtn, .btn.btn-default.cancelDelBtn, .btn.btn-default.hostDetailBtn, .btn.btn-default.orderInfoBtn {
+    padding: 2px 9px;
+    font-size: 10px;
+    background-color: #F2F6FC;
+    box-sizing: border-box;
+    border: 1px solid #C3CAD9;
+    color: #7B8091;
+}
+.btn.btn-default.detailBtn:hover, .btn.btn-default.hostDetailBtn:hover {
+    border-color: rgba(0, 0, 255,.5);
+    color:rgba(0, 0, 255,.6);
+}
+.btn.btn-default.updateBtn:hover {
+    border-color: rgba(255, 109, 28, 0.5);
+    color:rgba(255, 109, 28,.6);
+}
+.btn.btn-default.deleteBtn:hover {
+    border-color: rgba(255, 0, 18, 0.5);
+    color:rgba(255, 0, 18,.6);
+}
+.btn.btn-default.cancelDelBtn:hover {
+    border-color: rgba(54, 125, 54, 0.63);
+    color:rgba(54, 125, 54, 0.7);
+}
+.hostTab .statusView {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    box-sizing: border-box;
+    border-radius:50% ;
+    background-color: #00ff00;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+.hostContainer .hostTitle {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+}
+
+.CreatehostSingle, .CreatehostBatch, .updatehostBatch, .UpdatehostBatch{
+    float: left;
+    margin-left: 20px;
+    font-size: 13px;
+}
+.hostTitle .searchBtn {
+    float: right;
+    width: 400px;
+    margin-right: 20px;
+}
+.hostTitle .searchBtn input {
+    margin-top: 8px;
+    width: 300px;
+}
+.btn.btn-default.singleBtn, .btn.btn-success.BatchBtn, .btn .btn-warning .BatchBtn, .btn.btn-info.BatchBtn {
+    font-size: 13px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.btn.btn-default.singleBtn i {
+    display: inline-block;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.btn.btn-default.singleBtn:hover {
+    -webkit-text-shadow: 0 0 3px rgba(255, 255, 255,.6);
+    -moz-text-shadow: 0 0 3px rgba(255, 255, 255,.6);
+    -ms-text-shadow: 0 0 3px rgba(255, 255, 255,.6);
+    -o-text-shadow: 0 0 3px rgba(255, 255, 255,.6);
+    text-shadow: 0 0 3px rgba(255, 255, 255,.6);
+}
+.btn.btn-default.singleBtn:hover i {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.btn.btn-default.goBtn {
+    width: 40px;
+    height: 34px;
+}
+.searchBtn .searchText {
+    height: 34px;
+    padding-left: 5px;
+    margin-right: -3px;
+    border-radius: 5px;
+    line-height: 34px;
+    color: #262626;
+}
+.searchBtn input::-webkit-input-placeholder {
+    color: #D6D0CA !important; /* WebKit browsers */
+}
+.searchBtn input::-moz-placeholder {
+    color: #D6D0CA !important; /* Mozilla Firefox 19+ */
+}
+.searchBtn input:-ms-input-placeholder {
+    color: #D6D0CA !important; /* Internet Explorer 10+ */
+}
+.checkCreateHost {
+    display: block;
+    width: 400px;
+    height: 40px;
+    margin: 0 auto;
+    line-height: 40px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.modal-content.CreatehostSingleView {
+    margin: 100px auto;
+}
+
+.modal-content.CreatehostSingleView .titleBar{
+    width: 100%;
+    height: 30px;
+    background-color: #33363f;
+    background: -webkit-linear-gradient(#33363f, #357a6d); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#33363f, #357a6d); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#33363f, #357a6d); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#33363f, #357a6d); /* 标准的语法 */
+}
+
+
+.hostId {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+.hostId input {
+    display: inline-block;
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    line-height: 40px;
+    margin-left: 3px;
+    color: #262626;
+}
+.hostId input::-webkit-input-placeholder {
+    color: #D6D0CA !important; /* WebKit browsers */
+}
+.hostId input::-moz-placeholder {
+    color: #D6D0CA !important; /* Mozilla Firefox 19+ */
+}
+.hostId input:-ms-input-placeholder {
+    color: #D6D0CA !important; /* Internet Explorer 10+ */
+}
+.hostId .hostIdInput {
+    display: inline-block;
+    height: 40px;
+    padding-top: 21px;
+}
+.hostId .hostIdInput input {
+    line-height: 30px;
+}
+.btn.btn-default.checkHostBtn {
+    padding: 4px 12px;
+    margin-left: -1px;
+    margin-bottom: 1px;
+}
+.handle {
+    text-align: center;
+}
+.btn.btn-warning.BatchBtn {
+    font-size: 13px;
+}
+.btn-group.handleBtn {
+    padding: 5px 0;
+}
+.hostInfoContent {
+    min-height: 320px;
+    margin-top: 10px;
+}
+.hostCheckConver, .createSureconver{
+    position: fixed;
+    background-color: rgba(251, 255, 231,.1);
+    width: 900px;
+    height: 373px;
+    top: 40px;
+    left: 0;
+    z-index: 100;
+    border-radius: 5px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 373px;
+}
+.createSureconver {
+    height: 400px;
+}
+.createhostResult {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+}
+.hostInfoRequestResView {
+    position: fixed;
+    width: 300px;
+    height: 100px;
+    z-index: 100000;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -50px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 100px;
+    -webkit-box-shadow: 0 0 15px #ffffff;
+    -moz-box-shadow: 0 0 15px #ffffff;
+    box-shadow: 0 0 15px #ffffff;
+    text-align: center;
+    font-size: 15px;
+    color: #FFF;
+    display: none;
+}
+.mainPage .pagination {
+    height: 60px;
+    line-height: 40px;
+    float: right;
+    margin: 10px 65px 0 0;
+}
+.hostBanner {
+    width: 100%;
+    min-width: 1200px;
+    height: 60px;
+    line-height: 50px;
+    background-color: #FFF;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-border-bottom: 1px solid #cccccc;
+    -moz-border-bottom: 1px solid #cccccc;
+    -ms-border-bottom: 1px solid #cccccc;
+    -o-border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    text-align: center;
+
+}
+.hostBanner .hostTitleBox {
+    padding: 5px 0 0 40px;
+    font-size: 18px;
+    font-weight: bolder;
+    display: inline-block;
+}
+.hostBanner .hostSelectBox {
+    padding: 5px 0 0 40px;
+    color: #8c8c8c;
+    font-size: 15px;
+}
+.hostBanner .hostSelectBox div{
+    display: inline-block;
+    cursor: pointer;
+    padding: 0 5px;
+    position: relative;
+    bottom: -2px;
+
+}
+.selectType {
+    background-color: #F2F6FC;
+    -webkit-border:1px solid #cccccc;
+    -moz-border:1px solid #cccccc;
+    -ms-border:1px solid #cccccc;
+    -o-border:1px solid #cccccc;
+    border:1px solid #cccccc;
+    -webkit-border-bottom:1px solid #F2F6FC;
+    -moz-border-bottom:1px solid #F2F6FC;
+    -ms-border-bottom:1px solid #F2F6FC;
+    -o-border-bottom:1px solid #F2F6FC;
+    border-bottom:1px solid #F2F6FC;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #5078E1;
+}
+.fa.fa-television.uhostIcon {
+    margin-right: 3px;
+}
+.hostIdInput .checkHostRegion {
+    height: 30px;
+    width: 80px;
+    float: left;
+}
+.histoyView .hostTitle {
+    margin-top: 80px;
+    background-color: #FFFFFF;
+    -webkit-border-bottom:1px solid #D6D0CA;
+    -moz-border-bottom:1px solid #D6D0CA;
+    -ms-border-bottom:1px solid #D6D0CA;
+    -o-border-bottom:1px solid #D6D0CA;
+    -khtml-border-bottom:1px solid #D6D0CA;
+    border-bottom:1px solid #D6D0CA;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+}
+.histoyView .hostTitle select{
+    height: 25px;
+    width: 80px;
+    vertical-align: middle;
+}
+
+.bannerSubtitle {
+    text-align: center;
+    display: inline-block;
+    padding-left: 5px;
+    color: #909090;
+}
+
+.hostTab .configPath {
+    position: relative;
+}
+
+.hostTab .configPath {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.hostTab .configPath div {
+    position: absolute;
+    width: 100%;
+    word-wrap:break-word;
+    top:2px;
+    background-color: #fff;
+    -webkit-border:1px solid #D6D0CA;
+    -moz-border:1px solid #D6D0CA;
+    -ms-border:1px solid #D6D0CA;
+    -o-border:1px solid #D6D0CA;
+    -khtml-border:1px solid #D6D0CA;
+    border:1px solid #D6D0CA;
+    display: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 3px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+
+.hostTab .configPath:hover div{
+    display: block;
+}
+
+.CreatehostSingleView .infoItem {
+    width: 70%;
+    margin: 10px auto;
+    color: #0f0f0f;
+    font-size: 15px;
+    font-weight: 500;
+
+}
+
+.CreatehostSingleView .infoItem input {
+    float: none;
+    display: inline-block;
+    width: 85%;
+    -webkit-border:1px solid #a6a6a6;
+    -moz-border:1px solid #a6a6a6;
+    -ms-border:1px solid #a6a6a6;
+    -o-border:1px solid #a6a6a6;
+    -khtml-border:1px solid #a6a6a6;
+    border:1px solid #a6a6a6;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    height: 30px;
+    color: #0f0f0f;
+    margin-top: 5px;
+    text-align: left;
+    padding-left: 5px;
+
+}
+
+.mainPage .orderContainer {
+    position: absolute;
+    left: 100%;
+    width: 95%;
+    min-width: 1200px;
+    border-radius: 5px;
+    top: 85px;
+    padding: 0 10px 20px 10px;
+    background-color: white;
+    display: none;
+}
+
+.orderContainer .title {
+    color: #3B3B3B;
+    font-size: 18px;
+    -webkit-border-bottom: 1px solid #DDDDDD;
+    -moz-border-bottom: 1px solid #DDDDDD;
+    -ms-border-bottom: 1px solid #DDDDDD;
+    -o-border-bottom: 1px solid #DDDDDD;
+    -khtml-border-bottom: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    height: 60px;
+    line-height: 60px;
+}
+
+.orderContainer .title .backBtn {
+    float: left;
+    margin-left: 5px;
+    font-size: 13px;
+}
+
+.orderContainer .title .backBtn:hover {
+    text-decoration: none;
+    color: #0f0f0f;
+}
+
+.orderContainer .title {
+    text-align: center;
+}
+.orderContainer .appLodingView {
+    position: absolute;
+    z-index: 500;
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    top:50%;
+    left:50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: url(assets/images/appLoding.gif) center center no-repeat;
+    background-size: cover;
+    display: none;
+}
+
+.orderContainer .hostTab {
+    width: 70%;
+    display: inline-block;
+    height: 675px;
+    overflow-y: scroll;
+}
+
+.orderContainer .historyContainer {
+    display: inline-block;
+    width: 28%;
+    height: 675px;
+    overflow-y: scroll;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+.hostInfoDetail {
+    height: 680px;
+    width: 450px;
+    -webkit-border:1px solid #9e9e9e;
+    -moz-border:1px solid #9e9e9e;
+    -ms-border:1px solid #9e9e9e;
+    -o-border:1px solid #9e9e9e;
+    -khtml-border:1px solid #9e9e9e;
+    border:1px solid #9e9e9e;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    position: absolute;
+    right: -400px;
+    top: 145px;
+    display: none;
+    z-index: 600;
+}
+
+.hostInfoDetail .hostInfoBgView{
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+    background: url(assets/images/hostInfoBg.jpg) center center no-repeat;
+    height: 100%;
+    width: 100%;
+    opacity: .1;
+    position: absolute;
+}
+
+.hostInfoDetail .hostInfoView{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.hostInfoDetail .closeBtn {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top:-7.5px;
+    left: -7.5px;
+    -webkit-border:1px solid rgba(130, 130, 250, 0.12);
+    -moz-border:1px solid rgba(130, 130, 250, 0.12);
+    -ms-border:1px solid rgba(130, 130, 250, 0.12);
+    -o-border:1px solid rgba(130, 130, 250, 0.12);
+    -khtml-border:1px solid rgba(130, 130, 250, 0.12);
+    border:1px solid rgba(130, 130, 250, 0.12);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    line-height: 15px;
+    background-color: #ED7371;
+    font-weight: bolder;
+}
+
+.hostInfoDetail .closeBtn:hover span {
+    visibility: visible;
+}
+
+.hostInfoDetail .closeBtn span {
+    visibility: hidden;
+    color: #850209;
+    margin: 0 0 1px 1px;
+}
+
+.hostInfoDetail .hostInfoView .hostInfoBase, .hostInfoDetail .hostInfoView .hostInfoSet,
+.hostInfoDetail .hostInfoView .hostInfoPay {
+    width: 80%;
+    margin: 20px auto;
+    -webkit-border:1px solid #9e9e9e;
+    -moz-border:1px solid #9e9e9e;
+    -ms-border:1px solid #9e9e9e;
+    -o-border:1px solid #9e9e9e;
+    -khtml-border:1px solid #9e9e9e;
+    border:1px solid #9e9e9e;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+}
+
+.hostInfoDetail .hostInfoView .hostInfoBase ul .title, .hostInfoDetail .hostInfoView .hostInfoSet ul .title,
+.hostInfoDetail .hostInfoView .hostInfoPay ul .title {
+    -webkit-border-left: 5px solid #9e9e9e;
+    -moz-border-left: 5px solid #9e9e9e;
+    -ms-border-left: 5px solid #9e9e9e;
+    -o-border-left: 5px solid #9e9e9e;
+    -khtml-border-left: 5px solid #9e9e9e;
+    border-left: 5px solid #9e9e9e;
+    font-size: 18px;
+    font-weight: bolder;
+    padding: 5px 5px 5px 3px;
+    background-color: #F5f6FA;
+    display: inline-block;
+    width: 100%;
+}
+
+.hostInfoDetail .hostInfoView .hostInfoBase li, .hostInfoDetail .hostInfoView .hostInfoSet li,
+.hostInfoDetail .hostInfoView .hostInfoPay li {
+    padding: 5px 5px 5px 8px;
+    -webkit-border-top:1px solid #d9d9d9;
+    -moz-border-top:1px solid #d9d9d9;
+    -ms-border-top:1px solid #d9d9d9;
+    -o-border-top:1px solid #d9d9d9;
+    -khtml-border-top:1px solid #d9d9d9;
+    border-top:1px solid #d9d9d9;
+    font-size: 14px;
+    background-color: #FFFFFF;
+    color: #9b9b9b;
+}
+
+.hostInfoDetail .hostInfoView .hostInfoBase li span, .hostInfoDetail .hostInfoView .hostInfoSet li span,
+.hostInfoDetail .hostInfoView .hostInfoPay li span {
+    color: #000;
+}
+
+.hostInfoDetail .hostInfoView .hostInfoBase li textarea {
+    vertical-align: top;
+    color: #000;
+}
+
+

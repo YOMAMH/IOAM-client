@@ -1,0 +1,107 @@
+<div class="contain" style="display: none">
+  <!--顶部通栏-->
+  <div class="banner">
+    <div class="bannerTitle">
+      <div class="title">听云CMDB</div>
+      <div class="titleBottom"></div>
+      <div class="canvas"></div>
+    </div>
+    <div class="headIcon">
+      <img src="assets/images/head1.png">
+      <span id="user"></span>
+    </div>
+  </div>
+
+  <div class="mySetting">
+    <div><span class="glyphicon glyphicon-user"></span><a href="#/user/setUp">个人中心</a></div>
+    <div><span class="glyphicon glyphicon-log-out"></span><a href="javascript:void(0);">退出登录</a></div>
+  </div>
+
+  <!--内容主体-->
+  <div class="content">
+    <!--左侧导航栏-->
+    <div class="nav">
+      <div class="navItem" id="apmInfo">
+        <div class="navItemTitle">
+          <span class="glyphicon glyphicon-cog setInfo"></span>
+          <span class="titleText">产品配置信息</span></div>
+        <ul>
+          <li routerLinkActive="active"><a routerLink="apm/app" class="actives">听云App</a></li>
+          <li routerLinkActive="active"><a routerLink="apm/browser">听云Browser</a></li>
+          <li routerLinkActive="active"><a routerLink="apm/common">听云Common</a></li>
+          <li routerLinkActive="active"><a routerLink="apm/network">听云Network</a></li>
+          <li routerLinkActive="active"><a routerLink="apm/saas">听云Saas</a></li>
+          <li routerLinkActive="active"><a routerLink="apm/server">听云Server</a></li>
+          <li routerLinkActive="active"><a routerLink="apm/netop">听云Netop</a></li>
+          <li routerLinkActive="active"><a routerLink="apm/controller">听云Controller</a></li>
+          <li routerLinkActive="active"><a routerLink="apm/alarm">听云Alarm</a></li>
+          <li routerLinkActive="active"><a routerLink="apm/base">架构组</a></li>
+        </ul>
+      </div>
+      <div class="navItem" id="ucloudInfo">
+        <div class="navItemTitle">
+          <span class="glyphicon glyphicon-globe setInfo"></span>
+          <span class="titleText">UCLOUD云信息</span></div>
+        <ul>
+          <li routerLinkActive="active"><a routerLink="uhost/uHost">云主机管理</a></li>
+          <li routerLinkActive="active"><a routerLink="uhost/upHost">物理云主机</a></li>
+          <li routerLinkActive="active"><a routerLink="uhost/load">负载均衡</a></li>
+          <li routerLinkActive="active"><a routerLink="uhost/uDb">云数据库</a></li>
+          <li routerLinkActive="active"><a routerLink="uhost/uMem">云内存数据库</a></li>
+          <li routerLinkActive="active"><a routerLink="uhost/uNet/ip">基础网络</a></li>
+        </ul>
+      </div>
+      <div class="navItem" id="aliInfo">
+        <div class="navItemTitle">
+          <span class="glyphicon glyphicon-globe setInfo"></span>
+          <span class="titleText">ALI云管理信息</span></div>
+        <ul>
+          <li routerLinkActive="active"><a routerLink="alUHost/alUHost">云主机管理</a></li>
+          <li routerLinkActive="active"><a routerLink="alUHost/alRDS">云数据库</a></li>
+          <li routerLinkActive="active"><a routerLink="alUHost/alSLB">云负载均衡</a></li>
+          <li routerLinkActive="active"><a routerLink="alUHost/alEIP">弹性公网IP</a></li>
+          <li routerLinkActive="active"><a routerLink="alUHost/alVPC">专属VPC</a></li>
+        </ul>
+      </div>
+      <div class="navItem" id="orderInfo">
+        <div class="navItemTitle">
+          <span class="fa fa-calendar-minus-o setInfo"></span>
+          <span class="titleText">工单管理信息</span></div>
+        <ul id="orderNav">
+          <li routerLinkActive="active"><a routerLink="workOrder/handledProdOrder">应用工单</a></li>
+          <li routerLinkActive="active"><a routerLink="workOrder/workDbOrder">数据库工单</a></li>
+          <li routerLinkActive="active"><a routerLink="workOrder/handedleOrder">主机配置工单</a></li>
+          <li routerLinkActive="active" id="myAcceptNav"><a routerLink="workOrder/myAcceptProdOrder">管理应用工单</a><span class="orderCount"></span></li>
+          <li routerLinkActive="active" ><a routerLink="workOrder/myAcceptOrder">管理主机配置工单</a><span class="orderCount"></span></li>
+          <li routerLinkActive="active" ><a routerLink="workOrder/myAcceptDBOrder">管理数据库工单</a><span class="orderCount"></span></li>
+          <li routerLinkActive="active"><a routerLink="workOrder/prodOrderAll">所有应用工单</a></li>
+
+        </ul>
+      </div>
+      <div class="navItem" id="authNav">
+        <div class="navItemTitle">
+          <span class="fa fa-unlock-alt setInfo"></span>
+          <span class="titleText">用户权限管理</span></div>
+        <ul>
+          <li routerLinkActive="active"><a routerLink="userAuth/authManage">权限管理</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!--右侧详细内容-->
+    <div class="detail">
+      <!--内容呈现区-->
+      <div>
+        <router-outlet></router-outlet>
+        <div class="appLodingView"></div>
+      </div>
+    </div>
+    <!--底部通栏-->
+    <div class="bottom">
+      <span>2017 © tingyunCMDB</span>
+    </div>
+  </div>
+</div>
+
+
+

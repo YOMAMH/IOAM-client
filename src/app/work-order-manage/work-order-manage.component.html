@@ -1,0 +1,308 @@
+<div class="mainPage">
+    <div class="orderMainContainer">
+        <div class="hostContainer">
+            <div class="title">
+                <span>我的主机配置工单</span>
+                <!-- Single button -->
+                <div class="btn-group createOrder">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        新增工单 <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0);">应用工单</a></li>
+                        <li><span data-toggle="modal" data-target=".bs-example-modal-lg">主机配置申请</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="hostTab">
+                <table>
+                    <tr class="header">
+                        <th width="280">ID / 主题</th>
+                        <th width="280">工单类别</th>
+                        <th width="200">状态</th>
+                        <th width="200">优先级</th>
+                        <th width="200">受理部门</th>
+                        <th width="200">最终操作人</th>
+                        <th width="300">创建日期</th>
+                        <th width="280">操作</th>
+                    </tr>
+                    <tr class="hostItem" [hidden]="!orderInfo" *ngFor="let info of orderInfo">
+                        <td><span>{{info?.id}}</span> / {{info?.title}}</td>
+                        <td>{{info?.change_type}}</td>
+                        <td><div class="orderType"><span>{{info?.type}}</span></div></td>
+                        <td>{{info?.priority}}</td>
+                        <td>运维组</td>
+                        <td>{{info?.accept_user_last}}</td>
+                        <td>{{info?.create_time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td>
+                            <button class="btn btn-default detailBtn" data-toggle="modal"
+                                    data-target=".detailView">详情
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--底部分页-->
+            <div class="pagination">
+                <div class="M-box3"></div>
+            </div>
+        </div>
+        <div class="orderContainer">
+            <div class="title">
+                <a class="backBtn" href="javascript:void(0);"><i class="fa fa-chevron-left"></i>返回</a>
+                <span>应用工单</span>
+            </div>
+            <div class="hostTab">
+                <div class="orderBox">
+                    <div class="orderItem">
+                        <span>业务类别<i>*</i></span> &nbsp;&nbsp;
+                        <select autofocus="autofocus">
+                            <option value="tingyun_netop">tingyun_netop</option>
+                            <option value="tingyun_app">tingyun_app</option>
+                            <option value="tingyun_server">tingyun_server</option>
+                            <option value="tingyun_browser">tingyun_browser</option>
+                            <option value="tingyun_saas">tingyun_saas</option>
+                            <option value="tingyun_network">tingyun_network</option>
+                            <option value="tingyun_base">架构组</option>
+                            <option value="tingyun_controller">tingyun_controller</option>
+                            <option value="tingyun_alarm">tingyun_alarm</option>
+                        </select>
+                    </div>
+                    <div class="orderItem">
+                        <span>应用名称<i>*</i></span> &nbsp;&nbsp;
+                        <select>
+                            <option value="svn">svn</option>
+                            <option value="other">其他</option>
+                            <option value="tingyun_cmdb">tingyun_cmdb</option>
+                        </select>
+                    </div>
+                    <div class="orderItem">
+                        <span>升级类型<i>*</i></span> &nbsp;&nbsp;
+                        <select>
+                            <option value="0">修复bug</option>
+                            <option value="1">产品发布</option>
+                        </select>
+                    </div>
+                    <div class="orderItem">
+                        <span>迭代版本<i>*</i></span> &nbsp;&nbsp;
+                        <input type="text" value="无">
+                    </div>
+                    <div class="orderItem">
+                        <span>Jenkins项目名称<i>*</i></span> &nbsp;&nbsp;
+                        <input type="text" value="无">
+                    </div>
+                    <div class="orderItem">
+                        <span>Build Num<i>*</i></span> &nbsp;&nbsp;
+                        <input type="text" value="无">
+                    </div>
+                    <div class="orderItem">
+                        <div style="color: red;">多条信息时，用分号隔开 <br> 示例:1.xxx;2.xxx;</div>
+                        <span>升级功能列表<i>*</i></span> &nbsp;&nbsp;
+                        <textarea rows="4" cols="130" style="vertical-align: top">无</textarea>
+                    </div>
+                    <div class="orderItem">
+                        <span>配置文件修改<i>*</i></span> &nbsp;&nbsp;
+                        <textarea rows="4" cols="130" style="vertical-align: top">无</textarea>
+                    </div>
+                    <div class="orderItem">
+                        <span>升级依赖描述<i>*</i></span> &nbsp;&nbsp;
+                        <textarea rows="4" cols="130" style="vertical-align: top">无</textarea>
+                    </div>
+                    <div class="orderItem">
+                        <span>程序附件</span> &nbsp;&nbsp;
+                        <input type="file" class="app_file_input" id="app_file">
+                    </div>
+                    <div class="orderItem">
+                        <span>sql附件</span> &nbsp;&nbsp;
+                        <input type="file" class="sql_file_input" id="sql_file">
+                    </div>
+                    <div class="orderItem" style="text-align: center">
+                      <button class="btn btn-default" id="resetBtn">重置</button>
+                      <button class="btn btn-success" id="commitBtn">提交</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="hostInfoRequestResView"></div>
+        </div>
+    </div>
+</div>
+
+<div class="hostInfoRequestResView"></div>
+
+<!--添加工单-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content CreatehostSingleView">
+            <div class="addTitle">新增工单</div>
+            <div class="addContent">
+                <div class="centerView">
+                    <div class="addContentTitle">
+                        <div><span class="wanging">*</span>主题：</div>
+                        <div><input type="text"></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div><span class="wanging">*</span>申请类型：</div>
+                        <div>
+                            <select class="queryType" style="vertical-align: middle">
+                                <option value="createHost">创建主机</option>
+                                <option value="updateHost">修改主机配置</option>
+                                <option value="updateHostOS">主机操作系统变更申请</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div><span class="wanging">*</span>主机类型：</div>
+                        <div>
+                            <select class="typeView" style="vertical-align: middle">
+                                <option value="uCloud">UCloud</option>
+                                <option value="aliCloud">阿里云</option>
+                            </select>
+                            <select class="typeView1" style="vertical-align: middle">
+                                <option value="uhost">云虚机</option>
+                                <option value="uphost">云物理机</option>
+                                <option value="uredis">云Reids</option>
+                                <option value="umemcached">云Memcached</option>
+                                <option value="uhadoop">uhadoop</option>
+                                <option value="eip">公网弹性IP</option>
+                                <option value="udb">云数据库</option>
+                                <option value="ulb">ulb</option>
+                                <option value="ukafka">ukafka</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div><span class="wanging">*</span>所属业务组：</div>
+                        <div><select class="tagView">
+                            <option value="app">听云APP</option>
+                            <option value="brs">听云Browser</option>
+                            <option value="common">听云Common</option>
+                            <option value="net">听云Network</option>
+                            <option value="saas">听云Saas</option>
+                            <option value="svr">听云Server</option>
+                            <option value="base">运维基础组件</option>
+                            <option value="cctl">听云Controller</option>
+                            <option value="netop">听云Netop</option>
+                            <option value="alam">听云Alam</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>所在机房：</div>
+                        <div><select class="ZoneView">
+                            <option value="all">不限</option>
+                            <option value="cn-bj1">北京一</option>
+                            <option value="cn-bj2">北京二</option>
+                            <option value="hk">香港</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>所选实例：</div>
+                        <label for="id_select"></label>
+                        <select id="id_select" class="selectpicker bla bla bli" multiple data-live-search="true">
+
+                        </select>
+                    </div>
+                    <div class="addContentGroup">
+                        <div><span class="wanging">*</span>优先级：</div>
+                        <div>
+                            <select class="firstList">
+                                <option value="0">一般</option>
+                                <option value="1">高</option>
+                                <option value="2">非常高</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>备注：</div>
+                        <div><textarea class="noteView" cols="100" rows="4" id="note"></textarea>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div><span class="wanging">*</span>注意：</div>
+                        <div><span>1.带星号为必填选项</span></div>
+                        <div><span>2.备注部分可选填：</span></div>
+                        <div><span>&nbsp;&nbsp;&nbsp;&nbsp;*机器配置要求：CPU 内存 硬盘（容量，是否SSD）<br> &nbsp;&nbsp;&nbsp;&nbsp;*网络：B机房、C机房、D机房、不限 <br> &nbsp;&nbsp;&nbsp;&nbsp;*操作系统：CentOS6.5、CentOS7.1、CentOS7.2、不限;</span></div>
+                    </div>
+                    <div class="handle ">
+                        <div class="handleBtn">
+                            <button type="button" class="btn btn-success BatchBtn" id="createSure"> 确认</button>
+                            <button type="button" class="btn btn-warning BatchBtn" id="createCancel"> 取消</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="addOrderType" style="display: none"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--工单详情-->
+<div class="modal fade detailView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content CreatehostSingleView">
+            <div class="addTitle">我的工单详情</div>
+            <div class="addContent">
+                <div class="centerView">
+                    <div class="addContentGroup">
+                        <div>主题：<span></span></div>
+                        <i style="display: none"></i>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>申请类型：<span></span><i style="display: none"></i></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>实例名称：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>所属业务组：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>所在机房：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>最终处理人：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>处理日期：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>优先级：<span></span><i style="display: none"></i></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>备注：</div>
+                        <div><textarea class="noteView" cols="100" rows="5" autofocus="autofocus" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>状态：<span></span></div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>运维意见：</div>
+                        <div><textarea class="noteView" cols="100" rows="5" id="noteView2" disabled="disabled"></textarea>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div>工单操作历史：</div>
+                        <div><textarea class="noteView" cols="100" rows="10" disabled="disabled"></textarea>
+                        </div>
+                    </div>
+                    <div class="addContentGroup">
+                        <div class="handleBtn">
+                            <button type="button" class="btn btn-success BatchBtn" id="handleAcBtn">确认</button>
+                            <button type="button" class="btn btn-warning BatchBtn" id="reSentBtn" data-toggle="modal" data-target=".bs-example-modal-lg">再次提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="closeBtn"><i class="fa fa-close"></i></div>
+    </div>
+</div>
+
+<!--loding-->
+<div class="conver" [hidden]="orderInfo">
+    <div class="conContent"></div>
+</div>

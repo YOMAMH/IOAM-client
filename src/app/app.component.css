@@ -1,0 +1,190 @@
+/*content*/
+.contain {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    min-width: 1200px;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    height: 900px;
+}
+.nav {
+    float: left;
+    width: 230px;
+    height: 100%;
+    background-color: #3D3F4B;
+    min-height: 800px;
+    z-index: 1000;
+    -webkit-transform: translate(-250px, 0);
+    -moz-transform: translate(-250px, 0);
+    -ms-transform: translate(-250px, 0);
+    -o-transform: translate(-250px, 0);
+    transform: translate(-250px, 0);
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+.showNav {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.nav ul {
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.nav .navItem li {
+    width: 100%;
+    height: 40px;
+    background-color: #3D3F4B;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.nav .navItem li:hover {
+    color: rgba(255, 255, 255,1);
+    text-decoration: none;
+    background-color: rgba(0, 0, 0,.5);
+    padding-left: 5px;
+    -webkit-text-shadow: 0 0 5px #FFF;
+    -moz-text-shadow: 0 0 5px #FFF;
+    -ms-text-shadow: 0 0 5px #FFF;
+    -o-text-shadow: 0 0 5px #FFF;
+    -khtml-text-shadow: 0 0 5px #FFF;
+    text-shadow: -2px 2px 8px #FFF;
+}
+.nav .navItem li a {
+    color: rgba(255, 255, 255,.6);
+    font-size: 13px;
+    padding: 3px 0;
+    display: inline-block;
+    width: 100%;
+}
+.nav .navItem li a.actives {
+    background-color: #000;
+    color: rgba(255, 255, 255,1);
+    -webkit-border-right:3px solid #00B3B8;
+    -moz-border-right:3px solid #00B3B8;
+    -ms-border-right:3px solid #00B3B8;
+    -o-border-right:3px solid #00B3B8;
+    -khtml-border-right:3px solid #00B3B8;
+    border-right:3px solid #00B3B8;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.nav .navItemTitle {
+    font-size: 16px;
+    color: rgba(255, 255, 255,1);
+    cursor: pointer;
+    text-align: center;
+    background-color: #30323A;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 5px;
+}
+.glyphicon.glyphicon-cog.setInfo, .glyphicon.glyphicon-globe.setInfo {
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+.bottom {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    line-height: 60px;
+    bottom: 0;
+}
+
+.showMsg {
+    position: fixed;
+    right: -280px;
+    top: 100px;
+    min-width: 280px;
+    height: 45px;
+    line-height: 50px;
+    background-color: rgba(34, 207, 111, 0.8);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-align: right;
+    display: none;
+}
+
+.showMsg div {
+    display: inline-block;
+}
+
+.showMsg .msgTitle {
+    text-align: center;
+}
+
+.showMsg .handleMsgBtn, .showMsg .unHandleMsgBtn {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    -webkit-border-left:1px solid #f1f1f1;
+    -moz-border-left:1px solid #f1f1f1;
+    -ms-border-left:1px solid #f1f1f1;
+    -o-border-left:1px solid #f1f1f1;
+    -khtml-border-left:1px solid #f1f1f1;
+    border-left:1px solid #f1f1f1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+.showMsg .handleMsgBtn:hover, .showMsg .unHandleMsgBtn:hover {
+    background-color: rgba(34, 207, 111, 1);
+}
+
+#myAcceptNav, #pubAcceptNav {
+    position: relative;
+}
+
+.orderCount {
+    position: absolute;
+    top: 17px;
+    left: 165px;
+    width: 10px;
+    height: 10px;
+    vertical-align: middle;
+    background-color: #67cf22;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    box-sizing: border-box;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    -webkit-box-shadow: inset 0 0 6px #FFF;
+    -moz-box-shadow: inset 0 0 6px #FFF;
+    box-shadow: inset 0 0 6px #FFF;
+    display: none;
+}
+
+
+
+

@@ -1,0 +1,151 @@
+<div class="mainPage">
+  <div class="hostBanner">
+    <div class="hostTitleBox"><span class="fa fa-database dataMysql"></span><span>云数据库</span></div>
+    <div class="hostSelectBox">
+      <div class="hostContainerBtn selectType"><span>云数据库管理</span></div>
+      <div class="hostRecoverBtn"><span>回收站</span></div>
+      <div class="hostHistoryBtn"><span>变更记录统计</span></div>
+    </div>
+  </div>
+  <div class="hostContainer">
+    <div class="hostTitle">
+      <div class="CreatehostSingle">
+        <button type="button" class="btn btn-primary singleBtn" data-toggle="modal"
+                data-target=".bs-example-modal-lg" id="createSingleBtn"><i class="fa fa-plus-square" style="margin-right: 3px"></i>添加云数据库
+        </button>
+      </div>
+
+      <div class="CreatehostBatch">
+        <button type="button" class="btn btn-success BatchBtn" id="createAllBtn"> 一键导入阿里云数据库信息</button>
+      </div>
+
+      <div class="UpdatehostBatch">
+        <button type="button" class="btn btn-info BatchBtn" id="updateAllBtn"><i class="fa fa-cog fa-spin fa-3x fa-fw" style="font-size: 15px; display: none"></i> <span>一键更新</span></button>
+      </div>
+
+      <div class="searchBtn">
+        <input type="text" class="searchText" placeholder="请输入资源名称关键字（Enter搜索）">
+      </div>
+    </div>
+    <div class="hostTab">
+      <div class="tablePage">
+        <table height="100" width="95%">
+          <tr class="header">
+            <th width="150">实例名称</th>
+            <th width="180">实例ID</th>
+            <th width="100">运行状态</th>
+            <th width="200">创建时间</th>
+            <th width="150">实例类型</th>
+            <th width="100">数据库类型</th>
+            <th width="150">所在可用区</th>
+            <th width="180">网络类型</th>
+            <th width="180">付费类型</th>
+            <th width="180">操作</th>
+          </tr>
+          <tr class="hostItem" [hidden]="!infoObj" *ngFor="let host of infoObj">
+            <td>{{host?.DBInstanceDescription}}</td>
+            <td>{{host?.DBInstanceId}}</td>
+            <td><i></i><span>{{host?.DBInstanceStatus}}</span></td>
+            <td>{{host?.CreateTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{host?.DBInstanceType}}</td>
+            <td>{{host?.Engine}} {{host?.EngineVersion}}</td>
+            <td><span>{{host?.ZoneId}}</span><i style="display: none">{{host?.RegionId}}</i></td>
+            <td>{{host?.InstanceNetworkType}}</td>
+            <td>{{host?.PayType}}</td>
+            <td>
+              <a class="btn btn-default updateBtn" href="javascript:void (0);">更新</a>
+              <a class="btn btn-default deleteBtn" href="javascript:void (0);">删除</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--底部分页-->
+      <div class="pagination">
+        <div class="M-box3"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hostRecover" style="display: none">
+    <div class="hostTitle"></div>
+    <div class="hostTab">
+      <table height="100" width="95%">
+        <tr class="header">
+          <th width="150">实例名称</th>
+          <th width="180">实例ID</th>
+          <th width="100">运行状态</th>
+          <th width="200">创建时间</th>
+          <th width="150">实例类型</th>
+          <th width="100">数据库类型</th>
+          <th width="150">所在可用区</th>
+          <th width="180">网络类型</th>
+          <th width="180">付费类型</th>
+          <th width="180">操作</th>
+        </tr>
+        <tr class="hostItem" [hidden]="!localInstancedropInfoObj" *ngFor="let host of localInstancedropInfoObj">
+          <td>{{host?.DBInstanceDescription}}</td>
+          <td>{{host?.DBInstanceId}}</td>
+          <td><i></i><span>{{host?.DBInstanceStatus}}</span></td>
+          <td>{{host?.CreateTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td>{{host?.DBInstanceType}}</td>
+          <td>{{host?.Engine}} {{host?.EngineVersion}}</td>
+          <td><span>{{host?.ZoneId}}</span><i style="display: none">{{host?.RegionId}}</i></td>
+          <td>{{host?.InstanceNetworkType}}</td>
+          <td>{{host?.PayType}}</td>
+          <td><button type="button" class="btn btn-default cancelDelBtn">还原</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="hostInfoRequestResView"></div>
+  </div>
+  <div class="histoyView" style="display: none">
+    <div class="hostTitle">
+      <span>年份: &nbsp;</span>
+      <select class="begDateYear">
+        <option value="2016-">2016</option>
+        <option value="2017-">2017</option>
+        <option value="2018-">2018</option>
+      </select>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;业务组: &nbsp;</span>
+      <select class="tagView">
+        <option value="all">全部</option>
+      </select>
+    </div>
+    <div id="container" style="min-width:400px;height:400px;"></div>
+  </div>
+  <div class="hostInfoRequestResView"></div>
+</div>
+
+<!--添加主机-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content CreatehostSingleView">
+      <div class="hostId">
+        <div class="hostIdInput">
+          <select class="checkHostRegion">
+            <option value="cn-qingdao">华北1</option>
+            <option value="cn-beijing" selected>华北2</option>
+          </select>
+          <input type="text" placeholder="请输入资源ID" class="checkHostText">
+        </div>
+        <button class="btn btn-default checkHostBtn">搜索</button>
+      </div>
+      <div class="createhostResult"><span></span></div>
+      <div class="hostInfoContent"></div>
+      <div class="hostCheckConver" style="display: none"><span>搜索中...</span></div>
+      <div class="createSureconver" style="display: none">
+        <div class="conContent"></div>
+      </div>
+      <div class="handle">
+        <div class="btn-group handleBtn">
+          <button type="button" class="btn btn-success BatchBtn" id="createSure"> 确认</button>
+          <button type="button" class="btn btn-warning BatchBtn" id="createCancel"> 取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--loding-->
+<div class="conver" style="display: none">
+  <div class="conContent"></div>
+</div>

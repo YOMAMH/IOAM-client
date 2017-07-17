@@ -1,0 +1,121 @@
+<div class="mainPage">
+  <div class="hostContainer">
+    <div class="title">
+      <span>未处理应用工单</span>
+    </div>
+    <div class="hostTab">
+      <table>
+        <tr class="header">
+          <th width="200">业务类别</th>
+          <th width="200">应用名称</th>
+          <th width="100">升级类型</th>
+          <th width="200">工单状态</th>
+          <th width="200">受理人</th>
+          <th width="300">创建日期</th>
+          <th width="280">操作</th>
+        </tr>
+        <tr class="hostItem" [hidden]="!orderInfo" *ngFor="let info of orderInfo">
+          <td>{{info?.pro_type}}<span style="display: none">{{info?.id}}</span></td>
+          <td><span>{{info?.pro_name}}</span><div style="display: none">
+            <i>{{info?.app_file}}</i><i>{{info?.sql_file}}</i>
+          </div></td>
+          <td><i class="fa" style="display: none"></i>{{info?.update_type}}</td>
+          <td>{{info?.order_type}}</td>
+          <td>{{info?.accept_user}}</td>
+          <td>{{info?.create_time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td>
+            <button class="btn btn-default detailBtn" data-toggle="modal"
+                    data-target=".detailView">详情
+            </button>
+            <button class="btn btn-default deleteBtn">撤销
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="hostInfoRequestResView"></div>
+    <!--底部分页-->
+    <div class="pagination">
+      <div class="M-box3"></div>
+    </div>
+  </div>
+</div>
+
+<!--工单详情-->
+<div class="modal fade detailView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content CreatehostSingleView">
+      <div class="addTitle">未处理应用工单详情</div>
+      <div class="addContent">
+        <div class="centerView">
+          <div class="addContentGroup">
+            <div>业务类别：<span></span></div>
+            <i style="display: none"></i>
+          </div>
+          <div class="addContentGroup">
+            <div>应用名称：<span></span></div>
+            <div style="display: none"><i></i><i></i></div>
+          </div>
+          <div class="addContentGroup">
+            <div>升级类型：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>迭代版本：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>Jenkins项目名称：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>Build Num：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>工单状态：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>受理人：<span></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>升级功能列表：</div>
+            <div><textarea class="noteView" cols="100" rows="5" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>配置文件修改: </div>
+            <div><textarea class="noteView" cols="100" rows="5" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>升级依赖描述：</div>
+            <div><textarea class="noteView" cols="100" rows="5" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="addContentGroup">
+            <div>程序附件：</div>
+            <div><span style="color: #1db702"></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>sql附件：</div>
+            <div><span style="color: #1db702"></span></div>
+          </div>
+          <div class="addContentGroup">
+            <div>操作历史：</div>
+            <div><textarea class="noteView" cols="100" rows="10" disabled="disabled"></textarea>
+            </div>
+          </div>
+          <div class="handle ">
+            <div class="handleBtn">
+              <button type="button" class="btn btn-danger BatchBtn" id="deleteBtn"> 撤回 </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="closeBtn"><i class="fa fa-close"></i></div>
+
+  </div>
+</div>
+
+<!--loding-->
+<div class="conver" [hidden]="orderInfo">
+  <div class="conContent"></div>
+</div>

@@ -1,0 +1,242 @@
+<div class="mainPage">
+  <div class="hostBanner">
+    <div class="hostTitleBox">
+      <span class="fa fa-server uhostIcon"></span><span>听云Server</span>
+    </div>
+    <span class="bannerSubtitle">听云Server,服务端应用的私人医生</span>
+
+  </div>
+  <div class="hostContainer">
+    <div class="hostTitle">
+      <div class="CreatehostSingle"><h3 style="padding: 10px 5px 0 0;">听云Server应用列表</h3></div>
+      <button type="button" class="btn btn-default singleBtn" data-toggle="modal"
+              data-target=".bs-example-modal-lg.createView" id="createSingleBtn">
+        <i class="fa fa-plus-square" style="margin-right: 3px"></i>添加应用
+      </button>
+
+      <div class="searchBtn">
+        <input type="text" class="searchText" placeholder="请输入应用名称关键字（Enter搜索）">
+      </div>
+    </div>
+    <div class="hostTab">
+      <table height="100" width="95%">
+        <tr class="header">
+          <th width="140">应用所属业务线</th>
+          <th width="200">应用名称</th>
+          <th width="100">应用监听端口</th>
+          <th width="100">node特有配置</th>
+          <th width="200">配置文件路径</th>
+          <th width="100">应用负责人</th>
+          <th width="100">应用依赖环境</th>
+          <th width="250">操作</th>
+        </tr>
+        <tr class="hostItem" [hidden]="!hostInfo" *ngFor="let host of hostInfo">
+          <td><span>{{host?.product_line}} </span><i style="display: none">{{host?.id}}</i></td>
+          <td><span>{{host?.name}}</span><i style="display: none">{{host?.node_name}}</i></td>
+          <td>{{host?.port}}</td>
+          <td>{{host?.use_path}}</td>
+          <td class="configPath"><span>{{host?.config_path}}</span>
+            <div>{{host?.config_path}}</div>
+          </td>
+          <td>{{host?.admin}}</td>
+          <td>{{host?.depend_env}}</td>
+          <td>
+            <a class="btn btn-default detailBtn" href="javascript:void (0);">详情</a>
+            <button class="btn btn-default updateBtn" data-toggle="modal"
+                    data-target=".bs-example-modal-lg.updateView">编辑
+            </button>
+            <a class="btn btn-default deleteBtn" href="javascript:void (0);">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="hostInfoRequestResView"></div>
+    <!--底部分页-->
+    <div class="pagination">
+      <div class="M-box3"></div>
+    </div>
+  </div>
+  <div class="hostRecover">
+    <div class="hostTab">
+      <div id="container1" style="min-width:300px;height:350px;"></div>
+      <div class="bottomLine"></div>
+      <div id="container2" style="min-width:300px;height:350px;"></div>
+    </div>
+  </div>
+  <div class="orderContainer">
+    <div class="title">
+      <a class="backBtn" href="javascript:void(0);"><i class="fa fa-chevron-left"></i>返回</a>
+      <span>主机列表</span>
+    </div>
+    <div class="hostTab">
+      <table height="100" width="95%">
+        <tr class="header">
+          <th width="150">主机名称</th>
+          <th width="80">资源ID</th>
+          <th width="50">业务组</th>
+          <th width="100">操作系统</th>
+          <th width="100">创建时间</th>
+          <th width="100">操作</th>
+        </tr>
+        <tr class="hostItem" *ngFor="let host of appUpHostInfo">
+          <td>{{host?.Name}}</td>
+          <td>{{host?.PHostId}}</td>
+          <td>{{host?.Tag}}</td>
+          <td>{{host?.OSType}}</td>
+          <td>{{host?.CreateTime * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td><a class="btn btn-default hostDetailBtn" href="javascript:void (0);"
+                 custom="uphost">应用变更详情</a></td>
+        </tr>
+        <tr class="hostItem" *ngFor="let host of appHostInfo">
+          <td>{{host?.Name}}</td>
+          <td>{{host?.UHostId}}</td>
+          <td>{{host?.Tag}}</td>
+          <td>{{host?.OsName}}</td>
+          <td>{{host?.CreateTime * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td><a class="btn btn-default hostDetailBtn" href="javascript:void (0);"
+                 custom="uhost">主机变更详情</a></td>
+        </tr>
+      </table>
+    </div>
+    <div class="historyContainer">
+      <div class="history">
+        <div class="history-date">
+          <ul>
+            <h2 class="first">
+              <a href="javascript:void(0);"></a>
+            </h2>
+
+            <li class="green" [hidden]="!changeHistoryInfo" *ngFor="let history of changeHistoryInfo">
+              <h3>{{history?.create_time | date:'yyyy-MM-dd HH:mm:ss'}}</h3>
+              <dl>
+                <dt>{{history?.change_title}}<span>{{history?.change_content}}</span></dt>
+                <button class="btn btn-default orderInfoBtn">工单详情</button>
+              </dl>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="hostInfoRequestResView"></div>
+  </div>
+  <div class="hostInfoDetail">
+    <div class="hostInfoBgView"></div>
+    <div class="hostInfoView">
+      <div class="hostInfoBase">
+        <ul><span class="title">应用工单信息</span>
+          <li>业务类别: <span>--</span></li>
+          <li>应用名称: <span>--</span></li>
+          <li>升级类型: <span>--</span></li>
+          <li>迭代版本: <span>--</span></li>
+          <li>Jenkins项目名称: <span>--</span></li>
+          <li>Build Num: <span>--</span></li>
+          <li>升级功能列表: <br> <textarea cols="50" rows="4" disabled="disabled"></textarea></li>
+          <li>配置文件修改: <br> <textarea cols="50" rows="4" disabled="disabled"></textarea></li>
+          <li>升级依赖描述: <br> <textarea cols="50" rows="4" disabled="disabled"></textarea></li>
+          <li>操作历史: <br> <textarea cols="50" rows="4" disabled="disabled"></textarea></li>
+        </ul>
+      </div>
+    </div>
+    <div class="closeBtn"><span class="fa fa-close"></span></div>
+  </div>
+</div>
+
+<!--添加主机-->
+<div class="modal fade bs-example-modal-lg createView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content CreatehostSingleView">
+      <div class="titleBar"></div>
+      <div class="infoItem">
+        <span>应用所属业务线<i>*</i></span> <br>
+        <input type="text" value="听云Server" disabled="disabled">
+      </div>
+      <div class="infoItem">
+        <span>应用名称<i>*</i></span> <br>
+        <input type="text">
+      </div>
+      <div class="infoItem">
+        <span>内部应用名称<i>*</i></span> <br>
+        <input type="text">
+      </div>
+      <div class="infoItem">
+        <span>应用监听端口<i>*</i></span> <br>
+        <input type="text">
+      </div>
+      <div class="infoItem">
+        <span>node特有配置<i>*</i></span> <br>
+        <input type="text">
+      </div>
+      <div class="infoItem">
+        <span>配置文件路径<i>*</i></span> <br>
+        <input type="text">
+      </div>
+      <div class="infoItem">
+        <span>应用负责人<i>*</i></span> <br>
+        <input type="text">
+      </div>
+      <div class="infoItem">
+        <span>应用依赖环境<i>*</i></span> <br>
+        <input type="text">
+      </div>
+      <div class="handle">
+        <div class="btn-group handleBtn">
+          <button type="button" class="btn btn-success BatchBtn" id="createSure"> 确认</button>
+          <button type="button" class="btn btn-warning BatchBtn" id="createCancel"> 取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--更新数据-->
+<div class="modal fade bs-example-modal-lg updateView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content CreatehostSingleView" *ngFor="let info of infoSet">
+      <div class="titleBar"></div>
+      <div class="infoItem">
+        <span>应用所属业务线<i>*</i></span> <br>
+        <input type="text" value="{{info?.product_line}}" disabled="disabled">
+      </div>
+      <div class="infoItem">
+        <span>应用名称<i>*</i></span> <br>
+        <input type="text" value={{info?.name}}>
+      </div>
+      <div class="infoItem">
+        <span>内部应用名称<i>*</i></span> <br>
+        <input type="text" value={{info?.node_name}}>
+      </div>
+      <div class="infoItem">
+        <span>应用监听端口<i>*</i></span> <br>
+        <input type="text" value={{info?.port}}>
+      </div>
+      <div class="infoItem">
+        <span>node特有配置<i>*</i></span> <br>
+        <input type="text" value={{info?.use_path}}>
+      </div>
+      <div class="infoItem">
+        <span>配置文件路径<i>*</i></span> <br>
+        <input type="text" value={{info?.config_path}}>
+      </div>
+      <div class="infoItem">
+        <span>应用负责人<i>*</i></span> <br>
+        <input type="text" value={{info?.admin}}>
+      </div>
+      <div class="infoItem">
+        <span>应用依赖环境<i>*</i></span> <br>
+        <input type="text" value={{info?.depend_env}}>
+      </div>
+      <div class="handle">
+        <div class="btn-group handleBtn">
+          <button type="button" class="btn btn-success BatchBtn" id="updateSure"> 确认</button>
+          <button type="button" class="btn btn-warning BatchBtn" id="updateCancel"> 取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--loding-->
+<div class="conver" [hidden]="hostInfo">
+  <div class="conContent"></div>
+</div>

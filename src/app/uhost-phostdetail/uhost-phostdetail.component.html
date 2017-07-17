@@ -1,0 +1,84 @@
+<div class="content">
+  <div class="orderContainer">
+    <div class="title">
+      <span>部署应用列表及主机变更记录</span>
+    </div>
+    <div class="hostTab">
+      <table height="100" width="98%">
+        <tr class="header">
+          <th width="140">应用所属业务线</th>
+          <th width="200">应用名称</th>
+          <th width="100">应用监听端口</th>
+          <th width="100">node特有配置</th>
+          <th width="200">配置文件路径</th>
+          <th width="100">应用负责人</th>
+          <th width="100">应用依赖环境</th>
+          <th width="250">操作</th>
+        </tr>
+        <tr class="hostItem" [hidden]="!hostInfo" *ngFor="let host of hostInfo">
+          <td><span>{{host?.product_line}} </span><i style="display: none">{{host?.id}}</i></td>
+          <td><span>{{host?.name}}</span><i style="display: none">{{host?.node_name}}</i></td>
+          <td>{{host?.port}}</td>
+          <td>{{host?.use_path}}</td>
+          <td class="configPath"><span>{{host?.config_path}}</span>
+            <div>{{host?.config_path}}</div>
+          </td>
+          <td>{{host?.admin}}</td>
+          <td>{{host?.depend_env}}</td>
+          <td>
+            <a class="btn btn-default detailBtn" href="javascript:void (0);">详情</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="historyContainer">
+      <div class="history">
+        <div class="history-date">
+          <ul>
+            <h2 class="first">
+              <a href="javascript:void(0);"></a>
+            </h2>
+
+            <li class="green" [hidden]="!changeHistoryInfo" *ngFor="let history of changeHistoryInfo">
+              <h3>{{history?.create_time | date:'yyyy-MM-dd HH:mm:ss'}}</h3>
+              <dl>
+                <dt>{{history?.change_title}}<span>{{history?.change_content}}</span></dt>
+                <button class="btn btn-default orderInfoBtn">工单详情</button>
+              </dl>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="hostInfoRequestResView"></div>
+    <div class="appLodingView"></div>
+  </div>
+  <div class="hostInfoDetail">
+    <div class="hostInfoBgView"></div>
+    <div class="hostInfoView">
+      <div class="hostInfoBase">
+        <ul><span class="title">主机工单信息</span>
+          <li>变更主题: <span>--</span></li>
+          <li>变更类型: <span>--</span></li>
+          <li>最终处理人: <span>--</span></li>
+          <li>实例类型: <span>--</span></li>
+          <li>所属业务组: <span>--</span></li>
+          <li>所在机房: <span>--</span></li>
+          <li>申请人: <span>--</span></li>
+          <li>创建日期: <span>--</span></li>
+          <li>备注: <br> <textarea cols="50" rows="4" disabled="disabled"></textarea></li>
+          <li>变更内容: <br> <textarea cols="50" rows="4" disabled="disabled"></textarea></li>
+          <li>操作历史: <br> <textarea cols="50" rows="4" disabled="disabled"></textarea></li>
+        </ul>
+      </div>
+    </div>
+    <div class="closeBtn"><span class="fa fa-close"></span></div>
+  </div>
+</div>
+
+<!-- loding界面-->
+<div class="conver" [hidden]="hostInfo">
+  <div class="conContent"></div>
+</div>
